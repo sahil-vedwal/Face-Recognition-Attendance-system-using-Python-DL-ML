@@ -1,0 +1,8 @@
+flask
+face_recognition
+dlib
+opencv-python
+numpy
+mysql-connector-python
+twilio
+
