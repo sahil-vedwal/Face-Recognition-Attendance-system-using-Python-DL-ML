@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Face Recognition Stream</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+        }
+        video, img {
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Live Face Recognition</h1>
+    <img src="{{ url_for('video_feed') }}" width="720" height="520" />
+</body>
+</html>

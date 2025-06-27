@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Student</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      background: url('/static/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+
+    .container-glass {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      width: 95%;
+      max-width: 1100px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+    }
+
+    .left {
+      flex: 1;
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+      color: white;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .left h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .left p {
+      font-size: 16px;
+      max-width: 300px;
+    }
+
+    .right {
+      flex: 1;
+      padding: 40px;
+      color: #fff;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 26px;
+      color: #00c6ff;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .input-group {
+      width: calc(50% - 10px);
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 14px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    input::placeholder {
+      color: #ddd;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="file"]:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 0 0.2rem rgba(0,198,255,0.4);
+    }
+
+    .btn-submit {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #00c6ff, #007bff);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      transform: scale(1.03);
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+    }
+
+    .message {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .container-glass {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .input-group {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-glass">
+    <div class="left">
+      <h1>Welcome Admin</h1>
+      <p>Register new students by filling the form on the right side.</p>
+    </div>
+
+    <div class="right">
+      <div class="form-container">
+        <h2>Register Student</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <p class="message" style="color: {{ 'lime' if category == 'success' else 'red' }};">
+                {{ message }}
+              </p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" enctype="multipart/form-data">
+          <div class="input-group">
+            <label>Enrollment Number:</label>
+            <input type="text" name="enrollment_number" required>
+          </div>
+
+          <div class="input-group">
+            <label>Student Name:</label>
+            <input type="text" name="student_name" required>
+          </div>
+
+          <div class="input-group">
+            <label>Email:</label>
+            <input type="email" name="email" required>
+          </div>
+
+          <div class="input-group">
+            <label>Department:</label>
+            <input type="text" name="department" required>
+          </div>
+
+          <div class="input-group">
+            <label>Branch:</label>
+            <input type="text" name="branch" required>
+          </div>
+
+          <div class="input-group">
+            <label>Year:</label>
+            <input type="text" name="year" required>
+          </div>
+
+          <div class="input-group">
+            <label>Section:</label>
+            <input type="text" name="section" required>
+          </div>
+
+          <div class="input-group">
+            <label>Parent Phone:</label>
+            <input type="text" name="parent_phone" required>
+          </div>
+
+          <div class="input-group">
+            <label>Password:</label>
+            <input type="text" name="password" required>
+          </div>
+
+          <div class="input-group">
+            <label>Upload Photo:</label>
+            <input type="file" name="photo" accept="image/*" required>
+          </div>
+
+          <button type="submit" class="btn-submit">➕ Register Student</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

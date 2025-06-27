@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Attendance Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta http-equiv="refresh" content="10">
+</head>
+<body>
+    <div class="container">
+        <h2>Live Attendance Dashboard</h2>
+        <table border="1">
+            <tr>
+                <th>Enrollment</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Entry Time</th>
+                <th>Exit Time</th>
+            </tr>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.enrollment }}</td>
+                <td>{{ record.name }}</td>
+                <td>{{ record.date }}</td>
+                <td>{{ record.entry_time }}</td>
+                <td>{{ record.exit_time }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
